@@ -1,3 +1,5 @@
+import inline
+import matplotlib
 from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import average_precision_score
