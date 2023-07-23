@@ -1,14 +1,9 @@
 from sklearn import metrics
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
-from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.tree import DecisionTreeClassifier
 
 from sklearn.metrics import f1_score
 from sklearn.metrics import recall_score
@@ -68,11 +63,7 @@ usecols=["Bwd Packet Length Std","Flow Bytes/s","Total Length of Fwd Packets","F
 
 #The machine learning algorithms to be used are defined in a dictionary (ml_list).
 ml_list={
-"Naive Bayes":GaussianNB(),
-"QDA":QDA(),
-"MLP":MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=500),
 "Random Forest":RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
-"ID3" :DecisionTreeClassifier(max_depth=5,criterion="entropy"),
 "AdaBoost":AdaBoostClassifier(),
 "Nearest Neighbors":KNeighborsClassifier(3)}
 
@@ -84,20 +75,9 @@ ml_list={
 others=["Bwd Packet Length Std", "Flow Bytes/s", "Total Length of Fwd Packets", "Fwd Packet Length Std",
      "Flow IAT Std", "Flow IAT Min", "Fwd IAT Total"]
 
-#In this part different sets of properties for machine learning methods are defined as follows:
-#For "Naive Bayes", "QDA", and "MLP", each method has a different feature list.
-#other algorithms (Random Forest, ID3, AdaBoost, and Nearest Neighbors) use
-#the first 7 of the features created by the file "04_2_feature_selection_for_attack_files.py" are used here.
-algorithms_features={"Naive Bayes":['Bwd Packet Length Std', 'Total Length of Fwd Packets', 'Flow IAT Min', 'Fwd Packet Length Min', 'Flow Packets/s', 'Fwd Packet Length Mean'] ,
-"QDA":['Bwd Packet Length Std', 'Flow Bytes/s', 'Total Length of Fwd Packets', 'Flow IAT Min'], 
-"MLP":['Bwd Packet Length Std', 'Flow Bytes/s', 'Total Length of Fwd Packets', 'Fwd Packet Length Std',
-'Flow IAT Min', 'Bwd Packet Length Max','Fwd Packet Length Min', 'Bwd Packet Length Mean',
-'Total Backward Packets', 'Total Fwd Packets', 'Fwd Packet Length Max', 'Bwd Packet Length Min'],
-
 
 #these algorithms use the features in the "others" list
 "Random Forest":others,
-"ID3" :others,
 "AdaBoost":others,
 "Nearest Neighbors":others}
 

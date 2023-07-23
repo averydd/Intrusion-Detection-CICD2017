@@ -1,14 +1,10 @@
 from sklearn import metrics
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
-from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.tree import DecisionTreeClassifier
+
 
 from sklearn.metrics import f1_score
 from sklearn.metrics import recall_score
@@ -49,12 +45,8 @@ folder(folder_name)
 
 #The machine learning algorithms to be used are defined in a dictionary (ml_list).
 ml_list={
-"Naive Bayes":GaussianNB(),
-"QDA":QDA(),
 "Random Forest":RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
-"ID3" :DecisionTreeClassifier(max_depth=5,criterion="entropy"),
 "AdaBoost":AdaBoostClassifier(),
-"MLP":MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=500),
 "Nearest Neighbors":KNeighborsClassifier(3)}
 
 
