@@ -6,7 +6,7 @@ from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 
 
-dataset = pd.read_csv('path_to_dataset.csv')
+dataset = pd.read_csv('CICID2017.csv')
 
 X = dataset.drop('label', axis=1)
 y = dataset['label']
